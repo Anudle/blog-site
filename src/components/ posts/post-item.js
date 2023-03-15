@@ -10,21 +10,25 @@ function PostItem(props) {
     year: "numeric",
   });
 
-  const imagePath = `/images/posts/${slug}/${image}`
+  const imagePath = `/images/posts/${slug}/${image}`;
+  const linkPath = `/posts/${slug}`;
 
   return (
     <li className={classes.post}>
-      <Link>
-        <a>
-          <div className={classes.images}>
-            <Image src="" alt={title} width={300} height={300} />
-          </div>
-          <div>
-            <h3>{title}</h3>
-            <time>{formattedDate}</time>
-            <p>{excerpt}</p>
-          </div>
-        </a>
+      <Link href={linkPath}>
+        <div className={classes.images}>
+          <Image
+            src={imagePath}
+            alt={title}
+            width={300}
+            height={300}
+          />
+        </div>
+        <div>
+          <h3>{title}</h3>
+          <time>{formattedDate}</time>
+          <p>{excerpt}</p>
+        </div>
       </Link>
     </li>
   );
