@@ -1,6 +1,6 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 function connectToServer() {
-  const uri = `mongodb+srv://anu:${process.env.REACT_APP_MONGO_KEYgit }@cluster0.7wpqgnq.mongodb.net/?retryWrites=true&w=majority`;
+  const uri = `mongodb+srv://anu:${process.env.REACT_APP_MONGO_KEY}@cluster0.7wpqgnq.mongodb.net/?retryWrites=true&w=majority`;
   const client = new MongoClient(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
