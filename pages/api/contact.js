@@ -17,43 +17,43 @@ async function connectToCollection(client, dbName, collection) {
 }
 
 async function handler(req, res) {
-	const client = await connectToServer();
-	const dbName = "test";
-	const collection = "messages";
-	if (req.method === "POST") {
-		const { email, name, message } = req.body;
-		if (
-			!email ||
-			!email.includes("@") ||
-			!name ||
-			name.trim() === "" ||
-			!message ||
-			message.trim() == ""
-		) {
-			res.status(422).json({ message: "Invalid input." });
-			return;
-		}
-		const newMessage = {
-			email,
-			name,
-			message,
-		};
-		async function run() {
-			try {
-				const col = await connectToCollection(client, "test", "messages");
-				await col.insertOne(newMessage);
-				res.status(200).json({ message: "new message" });
-			} catch (error) {
-				console.log(error);
-				res
-					.status(500)
-					.json({ message: "could not connect to database", error });
-			} finally {
-				await client.close();
-			}
-		}
-		run().catch(console.dir);
-	}
+  const client = await connectToServer();
+  const dbName = "test";
+  const collection = "messages";
+  if (req.method === "POST") {
+    const { email, name, message } = req.body;
+    if (
+      !email ||
+      !email.includes("@") ||
+      !name ||
+      name.trim() === "" ||
+      !message ||
+      message.trim() == ""
+    ) {
+      res.status(422).json({ message: "Invalid input." });
+      return;
+    }
+    const newMessage = {
+      email,
+      name,
+      message,
+    };
+    async function run() {
+      try {
+        const col = await connectToCollection(client, "test", "messages");
+        await col.insertOne(newMessage);
+        res.status(200).json({ message: "new message" });
+      } catch (error) {
+        console.log(error);
+        res
+          .status(500)
+          .json({ message: "could not connect to database", error });
+      } finally {
+        await client.close();
+      }
+    }
+    run().catch(console.dir);
+  }
 }
 
 export default handler;
