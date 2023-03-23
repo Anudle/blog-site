@@ -1,9 +1,6 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
-const MONGO_PASSWORD = process.env.MONGO_PASSWORD;
-
-
 function connectToServer() {
-	const uri = `mongodb+srv://anu:${MONGO_PASSWORD}@cluster0.7wpqgnq.mongodb.net/?retryWrites=true&w=majority`;
+	const uri = `mongodb+srv://${process.env.USER_NAME}:${process.env.MONGO_PASSWORD}@${process.env.CLUSTER_NAME}.7wpqgnq.mongodb.net/?retryWrites=true&w=majority`;
 	const client = new MongoClient(uri, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,

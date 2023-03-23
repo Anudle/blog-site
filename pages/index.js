@@ -7,7 +7,7 @@ export default function Home(props) {
 	return (
 		<>
 			<Head>
-				<title>Anu's Blog</title>
+				<title>{"Anu's Blog"}</title>
 				<meta name="description" content="I post about front end stuff"></meta>
 			</Head>
 			<Hero></Hero>
