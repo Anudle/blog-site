@@ -16,11 +16,6 @@ module.exports = (phase) => {
 
         return config;
       },
-      env: {
-        USER_NAME: "anu",
-        MONGO_PASSWORD: "514HDesccq5uazzw",
-        CLUSTER_NAME: "cluster0",
-      },
     };
   }
   return {
@@ -36,11 +31,6 @@ module.exports = (phase) => {
       };
 
       return config;
-    },
-    env: {
-      USER_NAME: "anu",
-      MONGO_PASSWORD: "514HDesccq5uazzw",
-      CLUSTER_NAME: "cluster0",
     },
   };
 };
