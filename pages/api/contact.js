@@ -1,18 +1,19 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 function connectToServer() {
-  const uri = `mongodb+srv://anu:${process.env.REACT_APP_MONGO_KEY}@cluster0.7wpqgnq.mongodb.net/?retryWrites=true&w=majority`;
-  const client = new MongoClient(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    serverApi: ServerApiVersion.v1,
-  });
-  return client;
+	const uri = `mongodb+srv://${process.env.USER_NAME}:${process.env.MONGO_PASSWORD}@${process.env.CLUSTER_NAME}.7wpqgnq.mongodb.net/?retryWrites=true&w=majority`;
+	const client = new MongoClient(uri, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+		serverApi: ServerApiVersion.v1,
+	});
+	return client;
 }
 
 async function connectToCollection(client, dbName, collection) {
-  await client.connect();
-  const db = await client.db(dbName);
-  return db.collection(collection);
+	await client.connect();
+	console.log("connected Successfully");
+	const db = await client.db(dbName);
+	return db.collection(collection);
 }
 
 async function handler(req, res) {
